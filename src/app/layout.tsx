@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import './globals.css'
 import styles from './layout.module.css'
 
@@ -15,10 +16,13 @@ export default function RootLayout({
       <head />
       <body>
         <header className={styles.header}>
-          <h1>Demo Note</h1>
+          <Link href="/">
+            <h1>Demo Note</h1>
+          </Link>
           <nav className={styles.nav}>
-            <a href="">Contact</a>
-            <a href="">About</a>
+            <Link href="/contact">Contact</Link>
+            <Link href="/about">About</Link>
+            <Link href="/products">Products</Link>
           </nav>
         </header>
         {children}
