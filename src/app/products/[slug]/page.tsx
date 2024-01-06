@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 type Props = {
   params: {
     slug: string;
@@ -5,16 +7,11 @@ type Props = {
 };
 
 export default function PantsPage({ params }: Props) {
-  return (
-    <div>
-      <h1>{params.slug} 제품 설명 페이지</h1>
-    </div>
-  );
+  if (params.slug === 'nothing') notFound()
+  return <h1>{params.slug} 제품 설명 페이지</h1>;
 }
 
 export function generateStaticParams() {
-  const products = ["pants", "skirt"];
-  return products.map((product) => ({
-    slug: product,
-  }));
+  const products = ['pants', 'skirt']
+  return products.map((products) => ({ slug: products }))
 }
