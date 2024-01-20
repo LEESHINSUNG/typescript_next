@@ -1,6 +1,9 @@
 import { getProduct, getProducts } from "@/service/products";
 import { notFound } from "next/navigation";
 
+// ISR : revalidate 로 지정한 값의 시간이 흐르면 자동 업데이트됨
+export const revalidate = 3;
+
 type Props = {
   params: {
     slug: string;
