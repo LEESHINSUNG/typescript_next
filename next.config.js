@@ -26,6 +26,19 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    /* 
+      보안상 프로젝트의 구성을 안보이게 하거나, 경로가 너무 길 경우 대체하는 기능
+      예) 원래의 경로는 /products/:slug 이지만, 간결하게 하기위해 /items/:slug로 사용
+      -> /products/:slug과 /items/:slug 둘다 사용 가능
+    */
+    return [
+      {
+        source: "/items/:slug",
+        destination: "/products/:slug",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
