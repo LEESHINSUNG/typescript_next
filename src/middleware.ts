@@ -8,6 +8,7 @@ export function middleware(req: NextRequest) {
   }
 }
 
+// 미들웨어로 체크할 경로만 설정 가능
 export const config = {
   matcher: ['/products/:path*']
 }
