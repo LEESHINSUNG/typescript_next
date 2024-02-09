@@ -1,6 +1,7 @@
 import { getProduct, getProducts } from "@/service/products";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import GoProductsButton from "../../../components/GoProductsButton";
 
 // ISR : revalidate 로 지정한 값의 시간이 흐르면 자동 업데이트됨
 export const revalidate = 3;
@@ -20,7 +21,10 @@ export function generateMetadata({ params }: Props) {
 export default async function ProductPage({ params: { slug } }: Props) {
   const product = await getProduct(slug);
 
-  if (!product) notFound();
+  if (!product) {
+    redirect("/products");
+    // notFound();
+  }
 
   // 서버 파일에 있는 데이터중 해당 제품의 정보를 찾아서 그걸 보여줌
   return (
@@ -32,6 +36,7 @@ export default async function ProductPage({ params: { slug } }: Props) {
         width={300}
         height={300}
       />
+      <GoProductsButton />
     </>
   );
 }
